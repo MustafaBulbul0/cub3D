@@ -1,39 +1,38 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   control.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mustafa <mustafa@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/30 23:27:32 by mustafa           #+#    #+#             */
+/*   Updated: 2025/08/30 23:37:16 by mustafa          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3d.h"
 
-static void	name_control(char *s, char **map)
+void	file_control(int ac, char **av)
 {
-	int	i;
+	int		i;
+	int		fd;
+	char	*s;
 
 	i = 0;
+	if (ac != 2 || !av[1])
+		exit_print("Map file missing.");
+	s = av[1];
 	if (strlen(s) < 4)
-	{
-		clear_2d_pointer(map);
-		printf("The map file  incorrect.\n");
-		exit (EXIT_FAILURE);
-	}
+		exit_print("The map file  incorrect.");
 	while (s[i + 4])
 		i++;
 	if (ft_strncmp(&s[i], ".cub", 4))
+		exit_print("The map file format is incorrect.");
+	fd = open(av[1], O_RDONLY);
+	if (fd == -1)
 	{
-		clear_2d_pointer(map);
-		printf("The map file format is incorrect.\n");
-		exit (EXIT_FAILURE);
+		printf("The file could not be opened: %s\n", strerror(errno));
+		exit(errno);
 	}
-}
-
-void	map_control(int ac, char **av)
-{
-	char	**map;
-
-	if (ac != 2 || !av[1])
-	{
-		printf("Map file missing.\n");
-		exit (EXIT_FAILURE);
-	}
-	map = read_and_split(av[1]);
-	if (!map)
-		exit(EXIT_FAILURE);
-	name_control(av[1], map);
-
-	clear_2d_pointer(map);
+	close (fd);
 }
