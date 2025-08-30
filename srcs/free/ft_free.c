@@ -1,4 +1,4 @@
-#include "../../librarys/cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	ft_free_game(t_game *game)
 {

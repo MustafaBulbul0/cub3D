@@ -17,10 +17,10 @@ SRCS		= $(SRC_DIR)/main.c \
 
 OBJS		= $(patsubst $(SRC_DIR)/%.c,$(OBJDIR)/%.o,$(SRCS))
 
-LIBFT		= libft/libft.a
-MLX			= minilibx-linux/libmlx.a
+LIBFT		= libraries/libft/libft.a
+MLX			= libraries/minilibx-linux/libmlx.a
 
-MLX_FLAGS	= -Lminilibx-linux -lmlx -lXext -lX11 -lm -lz
+MLX_FLAGS	= -Llibraries/minilibx-linux -lmlx -lXext -lX11 -lm -lz
 
 all: $(NAME)
 
@@ -35,19 +35,19 @@ $(OBJDIR):
 	mkdir -p $(OBJDIR)
 
 $(LIBFT):
-	$(MAKE) -C libft
+	$(MAKE) -C libraries/libft
 
 $(MLX):
-	$(MAKE) -C minilibx-linux
+	$(MAKE) -C libraries/minilibx-linux
 
 clean:
 	$(RM) -r $(OBJDIR)
-	$(MAKE) clean -C libft
-	$(MAKE) clean -C minilibx-linux
+	$(MAKE) clean -C libraries/libft
+	$(MAKE) clean -C libraries/minilibx-linux
 
 fclean: clean
 	$(RM) $(NAME)
-	$(MAKE) fclean -C libft
+	$(MAKE) fclean -C libraries/libft
 
 re: fclean all
 

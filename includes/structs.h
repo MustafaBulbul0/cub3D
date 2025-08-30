@@ -3,7 +3,10 @@
 
 typedef struct s_texture
 {
-	/* data */
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
 }	t_texture;
 
 typedef struct s_game

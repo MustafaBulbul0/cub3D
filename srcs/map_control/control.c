@@ -1,4 +1,4 @@
-#include "../../librarys/cub3d.h"
+#include "../../includes/cub3d.h"
 
 static void	name_control(char *s, char **map)
 {

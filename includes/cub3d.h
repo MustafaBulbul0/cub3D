@@ -9,9 +9,9 @@
 # include <sys/time.h>
 # include <math.h>
 # include <errno.h>
-# include "../libft/libft.h"
-# include "../minilibx-linux/mlx.h"
-# include "../minilibx-linux/mlx_int.h"
+# include "../libraries/libft/libft.h"
+# include "../libraries/minilibx-linux/mlx.h"
+# include "../libraries/minilibx-linux/mlx_int.h"
 # include "structs.h"
 
 void	map_control(int ac, char **av);

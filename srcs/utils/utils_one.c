@@ -1,4 +1,4 @@
-#include "../../librarys/cub3d.h"
+#include "../../includes/cub3d.h"
 
 static char	*ft_realloc(char *s, int size)
 {
