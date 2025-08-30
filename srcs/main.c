@@ -1,6 +1,6 @@
 #include "../librarys/cub3d.h"
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	t_all	*all_structs;
 

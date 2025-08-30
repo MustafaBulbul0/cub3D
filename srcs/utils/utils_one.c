@@ -20,23 +20,14 @@ static char	*ft_realloc(char *s, int size)
 	return (new_s);
 }
 
-char	**read_and_split(char *path)
+static char	*ft_read(int fd)
 {
 	int		ret;
 	int		i;
-	int		fd;
-	char	*buf;
 	char	c;
-	char	**map;
+	char	*buf;
 
 	i = 0;
-	fd = open(path, O_RDONLY);
-	if (fd == -1)
-	{
-		printf("The file could not be opened: %s\n",
-			strerror(errno));
-		exit(errno);
-	}
 	buf = ft_calloc(1, sizeof(char));
 	if (!buf)
 		return (NULL);
@@ -50,6 +41,23 @@ char	**read_and_split(char *path)
 		ret = read(fd, &c, 1);
 		i++;
 	}
+	return (buf);
+}
+
+char	**read_and_split(char *path)
+{
+	int		fd;
+	char	*buf;
+	char	**map;
+
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+	{
+		printf("The file could not be opened: %s\n",
+			strerror(errno));
+		exit(errno);
+	}
+	buf = ft_read(fd);
 	map = ft_split(buf, '\n');
 	free(buf);
 	return (map);

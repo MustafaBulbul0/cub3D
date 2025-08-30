@@ -21,7 +21,7 @@ static void	name_control(char *s, char **map)
 	}
 }
 
-int	map_control(int ac, char **av)
+void	map_control(int ac, char **av)
 {
 	char	**map;
 
@@ -34,6 +34,6 @@ int	map_control(int ac, char **av)
 	if (!map)
 		exit(EXIT_FAILURE);
 	name_control(av[1], map);
-	
-	return 0;
+
+	clear_2d_pointer(map);
 }

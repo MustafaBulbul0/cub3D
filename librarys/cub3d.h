@@ -14,7 +14,7 @@
 # include "../minilibx-linux/mlx_int.h"
 # include "structs.h"
 
-int		map_control(int ac, char **av);
+void	map_control(int ac, char **av);
 
 char	**read_and_split(char *path);
 void	clear_2d_pointer(char **map);
