@@ -1,5 +1,31 @@
 #include "../../includes/cub3d.h"
 
+void	choose(char **src, char *dest, t_all all)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (src[i])
+	{
+		j = 0;
+		while (src[i][j] && src[i][j != '1'])
+		i++;
+	}
+}
+
+void	file_edit(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		//ft_strtrim(map[i], "");
+		i++;
+	}
+}
+
 static char	*ft_read(int fd)
 {
 	int		ret;
@@ -39,5 +65,4 @@ void	read_and_split(char *path, t_all *all)
 	buf = ft_read(fd);
 	map = ft_split(buf, '\n');
 	free(buf);
-	return (map);
 }
