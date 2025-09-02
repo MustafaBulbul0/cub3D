@@ -1,7 +1,7 @@
 NAME		= cub3D
 
 CC			= cc
-CFLAGS		= -Wall -Wextra -Ilibft -Iminilibx-linux -Isrcs -g
+CFLAGS		= -Wall -Wextra -Werror -Ilibft -Iminilibx-linux -Isrcs -g
 RM			= rm -f
 
 SRC_DIR		= srcs

@@ -40,3 +40,25 @@ void	exit_print(char *s)
 	printf("%s\n", s);
 	exit (EXIT_FAILURE);
 }
+
+void init_all_structs(t_all *all)
+{
+	all->game = malloc(sizeof(t_game));
+	if (!all->game)
+	{
+		perror("malloc failed");
+		exit(EXIT_FAILURE);
+	}
+	all->game->map = NULL;
+	all->texture = malloc(sizeof(t_texture));
+	if (!all->texture)
+	{
+		perror("malloc failed");
+		ft_free_all(all);
+		exit(EXIT_FAILURE);
+	}
+	all->texture->no = NULL;
+	all->texture->so = NULL;
+	all->texture->we = NULL;
+	all->texture->ea = NULL;
+}

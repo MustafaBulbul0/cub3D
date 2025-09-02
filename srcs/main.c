@@ -1,11 +1,5 @@
 #include "../includes/cub3d.h"
 
-void init_all_structs(t_all *all)
-{
-	all->game = malloc (sizeof(t_game));
-	all->texture = malloc(sizeof(t_texture));
-}
-
 int	main(int ac, char **av)
 {
 	t_all	*all_structs;
