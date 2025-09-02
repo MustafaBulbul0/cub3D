@@ -6,7 +6,7 @@
 /*   By: mustafa <mustafa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 23:27:32 by mustafa           #+#    #+#             */
-/*   Updated: 2025/08/30 23:37:16 by mustafa          ###   ########.fr       */
+/*   Updated: 2025/09/03 01:56:22 by mustafa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	file_control(int ac, char **av)
 	int		fd;
 	char	*s;
 
-	i = 0;
+	printf("%d\n", ac);
 	if (ac != 2 || !av[1])
 		exit_print("Map file missing.");
 	s = av[1];

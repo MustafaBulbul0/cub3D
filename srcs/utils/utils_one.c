@@ -38,6 +38,5 @@ char	*ft_realloc(char *s, int size)
 void	exit_print(char *s)
 {
 	printf("%s\n", s);
-	free(s);
 	exit (EXIT_FAILURE);
 }
