@@ -61,4 +61,6 @@ void init_all_structs(t_all *all)
 	all->texture->so = NULL;
 	all->texture->we = NULL;
 	all->texture->ea = NULL;
+	all->texture->f = NULL;
+	all->texture->c = NULL;
 }

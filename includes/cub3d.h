@@ -20,6 +20,7 @@ void	read_and_split(char *path, t_all *all);
 void	clear_2d_pointer(char **map);
 char	*ft_realloc(char *s, int size);
 void	init_all_structs(t_all *all);
+void	init_map_texture(t_all *all);
 
 void	shut_program_error(t_all *all, char *s);
 void	ft_free_all(t_all *all);

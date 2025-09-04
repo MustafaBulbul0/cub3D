@@ -7,6 +7,12 @@ typedef struct s_texture
 	char	*so;
 	char	*we;
 	char	*ea;
+
+	char	*f;
+	char	*c;
+
+	int	f_color[3];
+	int	c_color[3];
 }	t_texture;
 
 typedef struct s_game

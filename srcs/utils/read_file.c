@@ -102,5 +102,6 @@ void	read_and_split(char *path, t_all *all)
 	}
 	buf = ft_read(fd);
 	all->game->map = file_edit(ft_split(buf, '\n'));
+	init_map_texture(all);
 	free(buf);
 }
