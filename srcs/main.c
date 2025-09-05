@@ -10,11 +10,17 @@ int	main(int ac, char **av)
 		return (0);
 	init_all_structs(all_structs);
 	read_and_split(av[1], all_structs);
-	
-	for (int i = 0; all_structs->game->map[i] ; i++)
+	init_map_texture(all_structs);
+	read_map(all_structs, av[1]);
+
+	if (all_structs->game->map)
 	{
-		printf("%s\n", all_structs->game->map[i]);
+		for (int i = 0; all_structs->game->map[i] ; i++)
+		{
+			printf("%s\n", all_structs->game->map[i]);
+		}
 	}
+
 	printf("\n");
 	if (all_structs->texture->no)
 		printf("%s\n", all_structs->texture->no);

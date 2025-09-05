@@ -1,70 +1,5 @@
 #include "../../includes/cub3d.h"
 
-char	*new_row(char *s)
-{
-	char	*new_s;
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	new_s = ft_calloc (1, sizeof(char));
-	while (s[i])
-	{
-		if (s[i] != 9 && (11 > s[i] || s[i] > 13) && s[i] != 32 )
-		{
-			new_s = ft_realloc(new_s, j + 2);
-			new_s[j] = s[i];
-			j++;
-		}
-		i++;
-	}
-	free (s);
-	return (new_s);
-}
-
-char	**trim_map(char **map, int i)
-{
-	int		j;
-	int		len;
-	char	**n_map;
-
-	j = 0;
-	len = 0;
-	if(map[len])
-		len++;
-	n_map = ft_calloc(len, sizeof(char *));
-	len = 0;
-	while (map[j])
-	{
-		if (i == j)
-		{
-			j++;
-			continue ;
-		}
-		n_map[len] = ft_strdup(map[j]);
-		j++;
-		len++;
-	}
-	clear_2d_pointer(map);
-	return (n_map);
-}
-
-char	**file_edit(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i])
-	{
-		map[i] = new_row(map[i]);
-		if (map[i][0] == '\n')
-			map = trim_map (map, i);
-		i++;
-	}
-	return (map);
-}
-
 static char	*ft_read(int fd)
 {
 	int		ret;
@@ -101,7 +36,39 @@ void	read_and_split(char *path, t_all *all)
 		exit(errno);
 	}
 	buf = ft_read(fd);
-	all->game->map = file_edit(ft_split(buf, '\n'));
-	init_map_texture(all);
+	all->game->map = ft_split(buf, '\n');
 	free(buf);
+}
+
+void	read_map(t_all *all, char *path)
+{
+	int	i;
+	int	j;
+	int	k;
+	char	**map;
+
+	k = 0;
+	i = 0;
+	j = 0;
+	clear_2d_pointer(all->game->map);
+	read_and_split(path, all);
+	map = strdup_2d(all->game->map);
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if ((9 > map[i][j] || map[i][j] > 13) && map[i][j] != 32)
+			{
+				k++;
+				break ;
+			}
+			j++;
+		}
+		if (k == 6)
+			break ;
+		i++;
+	}
+	clear_2d_pointer(all->game->map);
+	all->game->map = strdup_2d(map + i + 1);
 }

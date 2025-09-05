@@ -1,0 +1,93 @@
+#include "../../includes/cub3d.h"
+
+char	*new_row(char *s)
+{
+	char	*new_s;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	new_s = ft_calloc (1, sizeof(char));
+	while (s[i])
+	{
+		if (s[i] != 9 && (11 > s[i] || s[i] > 13) && s[i] != 32 )
+		{
+			new_s = ft_realloc(new_s, j + 2);
+			new_s[j] = s[i];
+			j++;
+		}
+		i++;
+	}
+	free (s);
+	return (new_s);
+}
+
+char	**trim_map(char **map, int i)
+{
+	int		j;
+	int		len;
+	char	**n_map;
+
+	j = 0;
+	len = 0;
+	if(map[len])
+		len++;
+	n_map = ft_calloc(len, sizeof(char *));
+	len = 0;
+	while (map[j])
+	{
+		if (i == j)
+		{
+			j++;
+			continue ;
+		}
+		n_map[len] = ft_strdup(map[j]);
+		j++;
+		len++;
+	}
+	clear_2d_pointer(map);
+	return (n_map);
+}
+
+char	**file_edit(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		map[i] = new_row(map[i]);
+		if (map[i][0] == '\n')
+			map = trim_map (map, i);
+		i++;
+	}
+	return (map);
+}
+
+void	init_map_texture(t_all *all)
+{
+	int		i;
+	char	**map;
+
+	i = 0;
+	map = strdup_2d(all->game->map);
+	map = file_edit(map);
+	while (i < 6)
+	{
+		if (ft_strncmp(map[i], "NO", 2) == 0)
+			all->texture->no = ft_strdup(map[i] + 2);
+		else if (ft_strncmp(map[i], "SO", 2) == 0)
+			all->texture->so = ft_strdup(map[i] + 2);
+		else if (ft_strncmp(map[i], "WE", 2) == 0)
+			all->texture->we = ft_strdup(map[i] + 2);
+		else if (ft_strncmp(map[i], "EA", 2) == 0)
+			all->texture->ea = ft_strdup(map[i] + 2);
+		else if (ft_strncmp(map[i], "F", 1) == 0)
+			all->texture->f = ft_strdup(map[i] + 1);
+		else if (ft_strncmp(map[i], "C", 1) == 0)
+			all->texture->c = ft_strdup(map[i] + 1);
+		i++;
+	}
+	clear_2d_pointer(map);
+}
