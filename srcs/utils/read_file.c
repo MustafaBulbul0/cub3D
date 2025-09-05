@@ -36,15 +36,15 @@ void	read_and_split(char *path, t_all *all)
 		exit(errno);
 	}
 	buf = ft_read(fd);
-	all->game->map = ft_split(buf, '\n');
+	all->game->map = special_split(buf);
 	free(buf);
 }
 
 void	read_map(t_all *all, char *path)
 {
-	int	i;
-	int	j;
-	int	k;
+	int		i;
+	int		j;
+	int		k;
 	char	**map;
 
 	k = 0;
@@ -71,4 +71,5 @@ void	read_map(t_all *all, char *path)
 	}
 	clear_2d_pointer(all->game->map);
 	all->game->map = strdup_2d(map + i + 1);
+	clear_2d_pointer (map);
 }

@@ -3,23 +3,25 @@
 char	*new_row(char *s)
 {
 	char	*new_s;
+	char	*old_s;
 	int		i;
 	int		j;
 
 	i = 0;
 	j = 0;
-	new_s = ft_calloc (1, sizeof(char));
+	old_s = s;
+	new_s = ft_calloc(1, sizeof(char));
 	while (s[i])
 	{
-		if (s[i] != 9 && (11 > s[i] || s[i] > 13) && s[i] != 32 )
+		if (!is_space(s[i]))
 		{
 			new_s = ft_realloc(new_s, j + 2);
-			new_s[j] = s[i];
-			j++;
+			new_s[j++] = s[i];
+			new_s[j] = '\0';
 		}
 		i++;
 	}
-	free (s);
+	free(old_s);
 	return (new_s);
 }
 
@@ -29,11 +31,11 @@ char	**trim_map(char **map, int i)
 	int		len;
 	char	**n_map;
 
-	j = 0;
 	len = 0;
-	if(map[len])
+	while (map[len])
 		len++;
 	n_map = ft_calloc(len, sizeof(char *));
+	j = 0;
 	len = 0;
 	while (map[j])
 	{
@@ -42,9 +44,8 @@ char	**trim_map(char **map, int i)
 			j++;
 			continue ;
 		}
-		n_map[len] = ft_strdup(map[j]);
+		n_map[len++] = ft_strdup(map[j]);
 		j++;
-		len++;
 	}
 	clear_2d_pointer(map);
 	return (n_map);
@@ -55,12 +56,16 @@ char	**file_edit(char **map)
 	int	i;
 
 	i = 0;
-	while (map[i])
+	while (map && map[i])
 	{
 		map[i] = new_row(map[i]);
-		if (map[i][0] == '\n')
-			map = trim_map (map, i);
-		i++;
+		if (map[i][0] == '\0')
+		{
+			map = trim_map(map, i);
+			i = 0;
+		}
+		else
+			i++;
 	}
 	return (map);
 }
@@ -73,7 +78,7 @@ void	init_map_texture(t_all *all)
 	i = 0;
 	map = strdup_2d(all->game->map);
 	map = file_edit(map);
-	while (i < 6)
+	while (i < 6 && map[i])
 	{
 		if (ft_strncmp(map[i], "NO", 2) == 0)
 			all->texture->no = ft_strdup(map[i] + 2);

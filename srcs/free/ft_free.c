@@ -36,6 +36,16 @@ void	ft_free_texture(t_texture *texture)
 		free(texture->ea);
 		texture->ea = NULL;
 	}
+	if (texture->f)
+	{
+		free(texture->f);
+		texture->f = NULL;
+	}
+	if (texture->c)
+	{
+		free(texture->c);
+		texture->c = NULL;
+	}
 	free(texture);
 }
 

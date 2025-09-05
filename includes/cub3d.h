@@ -23,6 +23,8 @@ void	init_all_structs(t_all *all);
 char	**strdup_2d(char **map);
 void	init_map_texture(t_all *all);
 void	read_map(t_all *all, char *path);
+char	**special_split(char *s);
+int		is_space(char c);
 
 void	shut_program_error(t_all *all, char *s);
 void	ft_free_all(t_all *all);

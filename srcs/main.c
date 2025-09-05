@@ -16,9 +16,7 @@ int	main(int ac, char **av)
 	if (all_structs->game->map)
 	{
 		for (int i = 0; all_structs->game->map[i] ; i++)
-		{
 			printf("%s\n", all_structs->game->map[i]);
-		}
 	}
 
 	printf("\n");
