@@ -19,29 +19,14 @@ char	**strdup_2d(char **map)
 	return (new_map);
 }
 
-char	**special_split(char *s)
+char	**ft_loop(char *s, char **spl, int i, int j)
 {
-	char	**spl;
-	int		i;
-	int		j;
 	int		k;
-	int		lines;
 
-	lines = 1;
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == '\n')
-			lines++;
-		i++;
-	}
-	spl = malloc(sizeof(char *) * (lines + 1));
-	if (!spl)
-		return (NULL);
-	j = 0;
 	k = 0;
-	i = 0;
 	spl[j] = malloc(ft_strlen(s) + 1);
+	if (!spl[j])
+		exit_print("Malloc failed.", NULL);
 	while (s[i])
 	{
 		if (s[i] == '\n')
@@ -59,6 +44,27 @@ char	**special_split(char *s)
 	}
 	spl[j][k] = '\0';
 	spl[j + 1] = NULL;
+	return (spl);
+}
+
+char	**special_split(char *s)
+{
+	char	**spl;
+	int		i;
+	int		lines;
+
+	lines = 1;
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == '\n')
+			lines++;
+		i++;
+	}
+	spl = malloc(sizeof(char *) * (lines + 1));
+	if (!spl)
+		return (NULL);
+	spl = ft_loop(s, spl, 0, 0);
 	return (spl);
 }
 

@@ -28,6 +28,6 @@ int		is_space(char c);
 
 void	shut_program_error(t_all *all, char *s);
 void	ft_free_all(t_all *all);
-void	exit_print(char *s);
+void	exit_print(char *s, t_all *all);
 
 #endif

@@ -31,12 +31,11 @@ void	read_and_split(char *path, t_all *all)
 
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
-	{
-		printf("The file could not be opened: %s\n", strerror(errno));
-		exit(errno);
-	}
+		exit_print("The file could not be opened.", all);
 	buf = ft_read(fd);
 	all->game->map = special_split(buf);
+	if (!all->game->map)
+		exit_print("Empty map.", all);
 	free(buf);
 }
 

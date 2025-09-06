@@ -32,6 +32,11 @@ int	main(int ac, char **av)
 		printf("%s\n", all_structs->texture->f);
 	if (all_structs->texture->c)
 		printf("%s\n", all_structs->texture->c);
+	
+	for (int i = 0; i < 3 ; i++)
+		printf("%d\n", all_structs->texture->f_color[i]);
+	for (int i = 0; i < 3 ; i++)
+		printf("%d\n", all_structs->texture->c_color[i]);
 
 
 	ft_free_all(all_structs);

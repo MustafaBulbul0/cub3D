@@ -70,6 +70,39 @@ char	**file_edit(char **map)
 	return (map);
 }
 
+void	init_map_color(t_all *all)
+{
+	int		i;
+	int		j;
+	char	*f;
+	char	*c;
+
+	f = all->texture->f;
+	c = all->texture->c;
+	i = 0;
+	j = 0;
+	while (f[i])
+	{
+		all->texture->f_color[j] = ft_atoi(&f[i]);
+		while (f[i] != ',' && f[i])
+			i++;
+		if (f[i])
+			i++;
+		j++;
+	}
+	j = 0;
+	i = 0;
+	while (c[i])
+	{
+		all->texture->c_color[j] = ft_atoi(&c[i]);
+		while (c[i] != ',' && c[i])
+			i++;
+		if (c[i])
+			i++;
+		j++;
+	}
+}
+
 void	init_map_texture(t_all *all)
 {
 	int		i;
@@ -94,5 +127,6 @@ void	init_map_texture(t_all *all)
 			all->texture->c = ft_strdup(map[i] + 1);
 		i++;
 	}
+	init_map_color(all);
 	clear_2d_pointer(map);
 }

@@ -35,9 +35,11 @@ char	*ft_realloc(char *s, int size)
 	return (new_s);
 }
 
-void	exit_print(char *s)
+void	exit_print(char *s, t_all *all)
 {
-	printf("%s\n", s);
+	printf("Error :%s\n", s);
+	if (all)
+		ft_free_all(all);
 	exit (EXIT_FAILURE);
 }
 
@@ -45,18 +47,11 @@ void init_all_structs(t_all *all)
 {
 	all->game = malloc(sizeof(t_game));
 	if (!all->game)
-	{
-		perror("malloc failed");
-		exit(EXIT_FAILURE);
-	}
+		exit_print("Malloc failed.", all);
 	all->game->map = NULL;
 	all->texture = malloc(sizeof(t_texture));
 	if (!all->texture)
-	{
-		perror("malloc failed");
-		ft_free_all(all);
-		exit(EXIT_FAILURE);
-	}
+		exit_print("Malloc failed.", all);
 	all->texture->no = NULL;
 	all->texture->so = NULL;
 	all->texture->we = NULL;
