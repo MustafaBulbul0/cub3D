@@ -79,6 +79,8 @@ void	init_map_color(t_all *all)
 
 	f = all->texture->f;
 	c = all->texture->c;
+	if (!f || !c)
+		return ;
 	i = 0;
 	j = 0;
 	while (f[i])

@@ -12,6 +12,7 @@ int	main(int ac, char **av)
 	read_and_split(av[1], all_structs);
 	init_map_texture(all_structs);
 	read_map(all_structs, av[1]);
+	map_control(all_structs);
 
 	if (all_structs->game->map)
 	{

@@ -6,7 +6,7 @@
 /*   By: mustafa <mustafa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 23:27:32 by mustafa           #+#    #+#             */
-/*   Updated: 2025/09/06 07:48:12 by mustafa          ###   ########.fr       */
+/*   Updated: 2025/09/07 12:01:37 by mustafa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,58 @@ void	file_control(int ac, char **av)
 	if (fd == -1)
 		exit_print("The file could not be opened.", NULL);
 	close (fd);
+}
+int	name_control(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i + 4])
+		i++;
+	if (ft_strncmp(&s[i], ".xpm", 4) == 0)
+		return (1);
+	return (0);
+}
+
+int	color_control(char *s)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	if (48 <= s[0] && s[0] <= 57)
+		j++;
+	while (s[i])
+	{
+		if (s[i] == ',' && (48 <= s[i + 1] && s[i + 1] <= 57))
+			j++;
+		i++;
+	}
+	if (j == 3)
+		return (1);
+	return (0);
+}
+
+void texture_control(t_all *all)
+{
+	if (!all->texture->no || name_control(all->texture->no) == 0)
+		exit_print("Texture missing.", all);
+	if (!all->texture->so || name_control(all->texture->so) == 0)
+		exit_print("Texture missing.", all);
+	if (!all->texture->we || name_control(all->texture->we) == 0)
+		exit_print("Texture missing.", all);
+	if (!all->texture->ea || name_control(all->texture->ea) == 0)
+		exit_print("Texture missing.", all);
+	if (!all->texture->f || color_control(all->texture->f) == 0)
+		exit_print("Texture missing.", all);
+	if (!all->texture->c || color_control(all->texture->c) == 0)
+		exit_print("Texture missing.", all);
+	
+
+}
+
+void	map_control(t_all *all)
+{
+	texture_control(all);
 }

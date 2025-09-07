@@ -15,6 +15,7 @@
 # include "../libraries/minilibx-linux/mlx_int.h"
 
 void	file_control(int ac, char **av);
+void	map_control(t_all *all);
 
 void	read_and_split(char *path, t_all *all);
 void	clear_2d_pointer(char **map);
