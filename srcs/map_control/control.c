@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   control.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mustafa <mustafa@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/30 23:27:32 by mustafa           #+#    #+#             */
-/*   Updated: 2025/09/07 12:01:37 by mustafa          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/cub3d.h"
 
 void	file_control(int ac, char **av)
@@ -86,4 +74,6 @@ void texture_control(t_all *all)
 void	map_control(t_all *all)
 {
 	texture_control(all);
+	map_character(all);
+	wall_control(all);
 }

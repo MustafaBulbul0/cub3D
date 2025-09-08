@@ -18,6 +18,7 @@ typedef struct s_texture
 typedef struct s_game
 {
 	char	**map;
+	char	player_position;
 }	t_game;
 
 typedef struct s_all
