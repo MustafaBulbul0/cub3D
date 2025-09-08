@@ -76,4 +76,6 @@ void	map_control(t_all *all)
 	texture_control(all);
 	map_character(all);
 	wall_control(all);
+	is_single_map(all);
+	hole_control(all);
 }

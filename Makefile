@@ -11,7 +11,7 @@ FREE		= srcs/free
 OBJDIR		= OBJS
 
 SRCS		= $(SRC_DIR)/main.c \
-			$(MAP)/control.c $(MAP)/map_control.c \
+			$(MAP)/control.c $(MAP)/map_control.c $(MAP)/map_hole_control.c \
 			$(UTILS)/utils_one.c $(UTILS)/read_file.c $(UTILS)/utils_two.c \
 			$(UTILS)/init_map_texture.c \
 			$(FREE)/ft_free.c

@@ -18,6 +18,8 @@ void	file_control(int ac, char **av);
 void	map_control(t_all *all);
 void	map_character(t_all *all);
 void	wall_control(t_all *all);
+void	is_single_map(t_all *all);
+void	hole_control(t_all *all);
 
 void	read_and_split(char *path, t_all *all);
 void	clear_2d_pointer(char **map);
@@ -32,5 +34,8 @@ int		is_space(char c);
 void	shut_program_error(t_all *all, char *s);
 void	ft_free_all(t_all *all);
 void	exit_print(char *s, t_all *all);
+
+int	num_row(char **map);
+int	longest_row(char **map);
 
 #endif
