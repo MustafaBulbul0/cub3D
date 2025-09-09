@@ -14,6 +14,8 @@
 # include "../libraries/minilibx-linux/mlx.h"
 # include "../libraries/minilibx-linux/mlx_int.h"
 
+# define Y_PI 3.14159265359
+
 void	file_control(t_all *all, int ac, char **av);
 t_all	*map_control(int ac, char **av);
 void	map_character(t_all *all);
@@ -34,6 +36,7 @@ int		is_space(char c);
 int		space_or_end(char c);
 int		character_control(char c, t_all *all);
 void	flood_fill(char **map, int xz[2], int row, int col);
+int		secret_file(char *path);
 
 void	shut_program_error(t_all *all, char *s);
 void	ft_free_all(t_all *all);

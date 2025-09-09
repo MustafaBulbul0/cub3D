@@ -92,4 +92,3 @@ void	wall_control(t_all *all)
 		i++;
 	}
 }
-

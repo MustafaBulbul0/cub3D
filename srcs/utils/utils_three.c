@@ -23,3 +23,21 @@ void	flood_fill(char **map, int xz[2], int row, int col)
 	new_xz[1] = xz[1] - 1;
 	flood_fill(map, new_xz, row, col);
 }
+
+int	secret_file(char *path)
+{
+	int	i;
+
+	i = 0;
+	while (path[i])
+		i++;
+	while (i >= 0)
+	{
+		if (path[i] == '/')
+			break ;
+		i--;
+	}
+	if (path[i + 1] == '.')
+		return (1);
+	return (0);
+}

@@ -19,6 +19,8 @@ typedef struct s_game
 {
 	char	**map;
 	char	player_position;
+	int		*sin_tab;
+	int		*cos_tab;
 }	t_game;
 
 typedef struct s_all

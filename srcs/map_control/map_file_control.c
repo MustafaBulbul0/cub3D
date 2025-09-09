@@ -10,8 +10,8 @@ void	file_control(t_all *all, int ac, char **av)
 	if (ac != 2 || !av[1])
 		exit_print("Map file missing.", all);
 	s = av[1];
-	if (ft_strlen(s) < 4)
-		exit_print("The map file  incorrect.", all);
+	if (ft_strlen(s) <= 4 || secret_file(s))
+		exit_print("The map file format is incorrect.", all);
 	while (s[i + 4])
 		i++;
 	if (ft_strncmp(&s[i], ".cub", 4))
@@ -60,4 +60,3 @@ void	is_single_map(t_all *all)
 		i++;
 	}
 }
-
