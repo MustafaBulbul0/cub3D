@@ -1,5 +1,5 @@
-#ifndef cub3d_H
-# define cub3d_H
+#ifndef CUB3D_H
+# define CUB3D_H
 
 # include <unistd.h>
 # include <fcntl.h>
@@ -30,15 +30,12 @@ void	init_map_texture(t_all *all);
 void	read_map(t_all *all, char *path);
 char	**special_split(char *s);
 int		is_space(char c);
-int		space_or_end (char c);
-int		character_control (char c, t_all *all);
+int		space_or_end(char c);
+int		character_control(char c, t_all *all);
 void	flood_fill(char **map, int xz[2], int row, int col);
 
 void	shut_program_error(t_all *all, char *s);
 void	ft_free_all(t_all *all);
 void	exit_print(char *s, t_all *all);
-
-int	num_row(char **map);
-int	longest_row(char **map);
 
 #endif
