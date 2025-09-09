@@ -1,6 +1,6 @@
 #include "../../includes/cub3d.h"
 
-char	*new_row(char *s)
+static char	*new_row(char *s)
 {
 	char	*new_s;
 	char	*old_s;
@@ -25,7 +25,7 @@ char	*new_row(char *s)
 	return (new_s);
 }
 
-char	**trim_map(char **map, int i)
+static char	**trim_map(char **map, int i)
 {
 	int		j;
 	int		len;
@@ -51,7 +51,7 @@ char	**trim_map(char **map, int i)
 	return (n_map);
 }
 
-char	**file_edit(char **map)
+static char	**file_edit(char **map)
 {
 	int	i;
 
@@ -70,7 +70,7 @@ char	**file_edit(char **map)
 	return (map);
 }
 
-void	init_map_color(t_all *all)
+static void	init_map_color(t_all *all)
 {
 	int		i;
 	int		j;

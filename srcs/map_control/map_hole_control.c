@@ -1,6 +1,6 @@
 #include "../../includes/cub3d.h"
 
-int	longest_row(char **map)
+static int	longest_row(char **map)
 {
 	int	longest;
 	int	i;
@@ -20,7 +20,7 @@ int	longest_row(char **map)
 	return (longest + 2);
 }
 
-int	num_row(char **map)
+static int	num_row(char **map)
 {
 	int	i;
 
@@ -30,7 +30,7 @@ int	num_row(char **map)
 	return (i + 2);
 }
 
-void	make_copy_and_space(char *src, char *dest, int col)
+static void	make_copy_and_space(char *src, char *dest, int col)
 {
 	int	j;
 
@@ -52,7 +52,7 @@ void	make_copy_and_space(char *src, char *dest, int col)
 	dest[j] = '\0';
 }
 
-char	**new_map(char **map, int row, int col, t_all *all)
+static char	**new_map(char **map, int row, int col, t_all *all)
 {
 	char	**new_map;
 	int		i;

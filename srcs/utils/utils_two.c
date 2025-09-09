@@ -19,7 +19,7 @@ char	**strdup_2d(char **map)
 	return (new_map);
 }
 
-char	**ft_loop(char *s, char **spl, int i, int j)
+static char	**ft_loop(char *s, char **spl, int i, int j)
 {
 	int		k;
 

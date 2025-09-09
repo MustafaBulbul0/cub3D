@@ -1,28 +1,6 @@
 #include "../../includes/cub3d.h"
 
-void	file_control(int ac, char **av)
-{
-	int		i;
-	int		fd;
-	char	*s;
-
-	i = 0;
-	if (ac != 2 || !av[1])
-		exit_print("Map file missing.", NULL);
-	s = av[1];
-	if (ft_strlen(s) < 4)
-		exit_print("The map file  incorrect.", NULL);
-	while (s[i + 4])
-		i++;
-	if (ft_strncmp(&s[i], ".cub", 4))
-		exit_print("The map file format is incorrect.", NULL);
-	fd = open(av[1], O_RDONLY);
-	if (fd == -1)
-		exit_print("The file could not be opened.", NULL);
-	close (fd);
-}
-
-int	name_control(char *s)
+static int	name_control(char *s)
 {
 	int	i;
 
@@ -34,7 +12,7 @@ int	name_control(char *s)
 	return (0);
 }
 
-int	color_control(char *s)
+static int	color_control(char *s)
 {
 	int	i;
 	int	j;
@@ -68,13 +46,4 @@ void	texture_control(t_all *all)
 		exit_print("Texture missing.", all);
 	if (!all->texture->c || color_control(all->texture->c) == 0)
 		exit_print("Texture missing.", all);
-}
-
-void	map_control(t_all *all)
-{
-	texture_control(all);
-	map_character(all);
-	wall_control(all);
-	is_single_map(all);
-	hole_control(all);
 }

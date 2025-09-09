@@ -1,5 +1,25 @@
 #include "../../includes/cub3d.h"
 
+t_all	*map_control(int ac, char **av)
+{
+	t_all	*all;
+
+	all = malloc(sizeof(t_all));
+	if (!all)
+		exit_print("Malloc failed.", NULL);
+	init_all_structs(all);
+	file_control(all, ac, av);
+	read_and_split(av[1], all);
+	init_map_texture(all);
+	read_map(all, av[1]);
+	texture_control(all);
+	map_character(all);
+	wall_control(all);
+	is_single_map(all);
+	hole_control(all);
+	return (all);
+}
+
 void	map_character(t_all *all)
 {
 	int		i;
@@ -24,7 +44,7 @@ void	map_character(t_all *all)
 		exit_print("The map is wrong.", all);
 }
 
-int	check_neighbors(char **map, int i, int j)
+static int	check_neighbors(char **map, int i, int j)
 {
 	int	up_row;
 	int	down_row;
@@ -73,41 +93,3 @@ void	wall_control(t_all *all)
 	}
 }
 
-int	inner_loop(char **map, int i, int j)
-{
-	while (map[i][j])
-	{
-		if (!is_space(map[i][j]) && map[i][j] != '\0')
-			return (1);
-		j++;
-	}
-	return (0);
-}
-
-void	is_single_map(t_all *all)
-{
-	int		i;
-	int		counter;
-	int		loop_value;
-	char	**map;
-
-	map = all->game->map;
-	i = 0;
-	counter = 0;
-	while (map[i])
-	{
-		counter = inner_loop(map, i, 0);
-		if (counter)
-			break ;
-		i++;
-	}
-	i++;
-	while (map[i])
-	{
-		loop_value = inner_loop(map, i, 0);
-		if (loop_value == 1 && counter == 0)
-			exit_print("The map is wrong.", all);
-		counter = loop_value;
-		i++;
-	}
-}

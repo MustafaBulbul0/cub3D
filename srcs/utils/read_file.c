@@ -39,7 +39,7 @@ void	read_and_split(char *path, t_all *all)
 	free(buf);
 }
 
-int	find_start_index(char **map)
+static int	find_start_index(char **map)
 {
 	int	i;
 	int	j;
