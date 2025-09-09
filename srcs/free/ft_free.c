@@ -72,4 +72,3 @@ void	shut_program_error(t_all *all, char *s)
 	printf("%s\n", s);
 	exit(EXIT_FAILURE);
 }
-

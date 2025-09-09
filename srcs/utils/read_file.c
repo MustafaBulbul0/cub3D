@@ -39,19 +39,14 @@ void	read_and_split(char *path, t_all *all)
 	free(buf);
 }
 
-void	read_map(t_all *all, char *path)
+int	find_start_index(char **map)
 {
-	int		i;
-	int		j;
-	int		k;
-	char	**map;
+	int	i;
+	int	j;
+	int	k;
 
-	k = 0;
 	i = 0;
-	j = 0;
-	clear_2d_pointer(all->game->map);
-	read_and_split(path, all);
-	map = strdup_2d(all->game->map);
+	k = 0;
 	while (map[i])
 	{
 		j = 0;
@@ -68,7 +63,19 @@ void	read_map(t_all *all, char *path)
 			break ;
 		i++;
 	}
+	return (i);
+}
+
+void	read_map(t_all *all, char *path)
+{
+	int		start_index;
+	char	**map;
+
 	clear_2d_pointer(all->game->map);
-	all->game->map = strdup_2d(map + i + 1);
-	clear_2d_pointer (map);
+	read_and_split(path, all);
+	map = strdup_2d(all->game->map);
+	start_index = find_start_index(map);
+	clear_2d_pointer(all->game->map);
+	all->game->map = strdup_2d(map + start_index + 1);
+	clear_2d_pointer(map);
 }

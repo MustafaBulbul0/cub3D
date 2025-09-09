@@ -52,7 +52,7 @@ void	make_copy_and_space(char *src, char *dest, int col)
 	dest[j] = '\0';
 }
 
-char	**new_map(char **map, int	row, int col, t_all *all)
+char	**new_map(char **map, int row, int col, t_all *all)
 {
 	char	**new_map;
 	int		i;
@@ -75,32 +75,20 @@ char	**new_map(char **map, int	row, int col, t_all *all)
 	return (new_map);
 }
 
-void flood_fill(char **map, int x, int y, int row, int col)
-{
-	if (x < 0 || y < 0 || x >= row || y >= col)
-		return ;
-	if (!is_space(map[x][y]))
-		return ;
-	map[x][y] = 'F';
-
-	flood_fill(map, x + 1, y, row, col);
-	flood_fill(map, x - 1, y, row, col);
-	flood_fill(map, x, y + 1, row, col);
-	flood_fill(map, x, y - 1, row, col);
-}
-
 void	hole_control(t_all *all)
 {
 	char	**map;
 	char	**n_map;
 	int		i;
 	int		j;
+	int		xy[2];
 
-	i = 0;
+	ft_memset(xy, 0, sizeof(xy));
+	i = -1;
 	map = all->game->map;
 	n_map = new_map(map, num_row(map), longest_row(map), all);
-	flood_fill(n_map, 0, 0, num_row(map), longest_row(map));
-	while (n_map[i])
+	flood_fill(n_map, xy, num_row(map), longest_row(map));
+	while (n_map[++i])
 	{
 		j = 0;
 		while (n_map[i][j])
@@ -112,7 +100,6 @@ void	hole_control(t_all *all)
 			}
 			j++;
 		}
-		i++;
 	}
 	clear_2d_pointer(n_map);
 }

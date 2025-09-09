@@ -6,7 +6,7 @@ char	**strdup_2d(char **map)
 	int		len;
 	int		i;
 
-	i =	0;
+	i = 0;
 	len = 0;
 	while (map[len])
 		len++;
@@ -75,3 +75,9 @@ int	is_space(char c)
 	return (0);
 }
 
+int	space_or_end(char c)
+{
+	if (is_space(c) || c == '\0')
+		return (1);
+	return (0);
+}

@@ -74,34 +74,28 @@ void	init_map_color(t_all *all)
 {
 	int		i;
 	int		j;
-	char	*f;
-	char	*c;
 
-	f = all->texture->f;
-	c = all->texture->c;
-	if (!f || !c)
+	if (!all->texture->f || !all->texture->c)
 		return ;
 	i = 0;
-	j = 0;
-	while (f[i])
+	j = -1;
+	while (all->texture->f[i])
 	{
-		all->texture->f_color[j] = ft_atoi(&f[i]);
-		while (f[i] != ',' && f[i])
+		all->texture->f_color[++j] = ft_atoi(&all->texture->f[i]);
+		while (all->texture->f[i] != ',' && all->texture->f[i])
 			i++;
-		if (f[i])
+		if (all->texture->f[i])
 			i++;
-		j++;
 	}
-	j = 0;
+	j = -1;
 	i = 0;
-	while (c[i])
+	while (all->texture->c[i])
 	{
-		all->texture->c_color[j] = ft_atoi(&c[i]);
-		while (c[i] != ',' && c[i])
+		all->texture->c_color[++j] = ft_atoi(&all->texture->c[i]);
+		while (all->texture->c[i] != ',' && all->texture->c[i])
 			i++;
-		if (c[i])
+		if (all->texture->c[i])
 			i++;
-		j++;
 	}
 }
 

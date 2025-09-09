@@ -13,7 +13,7 @@ OBJDIR		= OBJS
 SRCS		= $(SRC_DIR)/main.c \
 			$(MAP)/control.c $(MAP)/map_control.c $(MAP)/map_hole_control.c \
 			$(UTILS)/utils_one.c $(UTILS)/read_file.c $(UTILS)/utils_two.c \
-			$(UTILS)/init_map_texture.c \
+			$(UTILS)/init_map_texture.c $(UTILS)/utils_three.c \
 			$(FREE)/ft_free.c
 
 OBJS		= $(patsubst $(SRC_DIR)/%.c,$(OBJDIR)/%.o,$(SRCS))

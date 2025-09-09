@@ -43,7 +43,7 @@ void	exit_print(char *s, t_all *all)
 	exit (EXIT_FAILURE);
 }
 
-void init_all_structs(t_all *all)
+void	init_all_structs(t_all *all)
 {
 	all->game = malloc(sizeof(t_game));
 	if (!all->game)
@@ -58,4 +58,20 @@ void init_all_structs(t_all *all)
 	all->texture->ea = NULL;
 	all->texture->f = NULL;
 	all->texture->c = NULL;
+}
+
+int	character_control(char c, t_all *all)
+{
+	int	position;
+
+	position = 0;
+	if (!(c == '1' || c == '0' || is_space(c) || c == 'N'
+			|| c == 'S' || c == 'E' || c == 'W' || c == '\0'))
+		exit_print("The map is wrong.", all);
+	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
+	{
+		position++;
+		all->game->player_position = c;
+	}
+	return (position);
 }

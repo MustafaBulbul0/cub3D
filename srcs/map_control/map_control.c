@@ -1,21 +1,5 @@
 #include "../../includes/cub3d.h"
 
-int	character_control (char c, t_all *all)
-{
-	int position;
-
-	position = 0;
-	if (!(c == '1' || c == '0' || is_space(c) || c == 'N'
-		|| c == 'S' || c == 'E' || c == 'W' || c == '\0'))
-		exit_print("The map is wrong.", all);
-	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
-	{
-		position++;
-		all->game->player_position = c;
-	}
-	return (position);
-}
-
 void	map_character(t_all *all)
 {
 	int		i;
@@ -37,14 +21,7 @@ void	map_character(t_all *all)
 		i++;
 	}
 	if (position != 1)
-		exit_print("The map is wrong.", all);	
-}
-
-int	space_or_end (char c)
-{
-	if (is_space(c) || c == '\0')
-		return (1);
-	return (0);
+		exit_print("The map is wrong.", all);
 }
 
 int	check_neighbors(char **map, int i, int j)
@@ -56,13 +33,10 @@ int	check_neighbors(char **map, int i, int j)
 		return (1);
 	if (j == 0 || j == (int)ft_strlen(map[i]) - 1)
 		return (1);
-
 	up_row = ft_strlen(map[i - 1]);
 	down_row = ft_strlen(map[i + 1]);
-
 	if (j >= up_row || j >= down_row)
 		return (1);
-
 	if (space_or_end(map[i - 1][j]) || space_or_end(map[i + 1][j])
 		|| space_or_end(map[i][j - 1]) || space_or_end(map[i][j + 1]))
 		return (1);
@@ -98,7 +72,6 @@ void	wall_control(t_all *all)
 		i++;
 	}
 }
-
 
 int	inner_loop(char **map, int i, int j)
 {

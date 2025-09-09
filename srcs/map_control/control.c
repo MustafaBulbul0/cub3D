@@ -21,6 +21,7 @@ void	file_control(int ac, char **av)
 		exit_print("The file could not be opened.", NULL);
 	close (fd);
 }
+
 int	name_control(char *s)
 {
 	int	i;
@@ -53,7 +54,7 @@ int	color_control(char *s)
 	return (0);
 }
 
-void texture_control(t_all *all)
+void	texture_control(t_all *all)
 {
 	if (!all->texture->no || name_control(all->texture->no) == 0)
 		exit_print("Texture missing.", all);
@@ -67,8 +68,6 @@ void texture_control(t_all *all)
 		exit_print("Texture missing.", all);
 	if (!all->texture->c || color_control(all->texture->c) == 0)
 		exit_print("Texture missing.", all);
-	
-
 }
 
 void	map_control(t_all *all)
