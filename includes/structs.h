@@ -19,9 +19,6 @@ typedef struct s_game
 {
 	char	**map;
 	int		*player_position; // x,y   col,row
-	void	*mlx;
-
-
 
 	double	*sin_tab;
 	double	*cos_tab;
@@ -29,18 +26,19 @@ typedef struct s_game
 
 typedef struct s_mlx
 {
+	void	*mlx;
 	void	*no_img;
 	void	*so_img;
 	void	*we_img;
 	void	*ea_img;
-	void	*ground_img;
-	void	*ptr_win;
+	void	*win;
 }	t_mlx;
 
 typedef struct s_all
 {
 	t_game		*game;
 	t_texture	*texture;
+	t_mlx		*mlx;
 }	t_all;
 
 #endif

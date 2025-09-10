@@ -58,6 +58,15 @@ void	init_all_structs(t_all *all)
 	all->texture->ea = NULL;
 	all->texture->f = NULL;
 	all->texture->c = NULL;
+	all->mlx = malloc(sizeof(t_mlx));
+	if (!all->mlx)
+		exit_print("Malloc failed.", all);
+	all->mlx->mlx = NULL;
+	all->mlx->win = NULL;
+	all->mlx->no_img = NULL;
+	all->mlx->so_img = NULL;
+	all->mlx->we_img = NULL;
+	all->mlx->ea_img = NULL;
 }
 
 int	character_control(char c, t_all *all)

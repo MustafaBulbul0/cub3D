@@ -49,4 +49,8 @@ void	start_game(t_all *all)
 {
 	player_init(all);
 	calculate_sin_cos(all);
+	
+	all->mlx->mlx = mlx_init();
+	all->mlx->win = mlx_new_window(all->mlx->mlx, 1920, 1080, "cube3D");
+	mlx_loop(all->mlx->mlx);
 }
