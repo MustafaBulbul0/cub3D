@@ -6,6 +6,7 @@ RM			= rm -f
 
 SRC_DIR		= srcs
 MAP			= srcs/map_control
+GAME		= srcs/game
 UTILS		= srcs/utils
 FREE		= srcs/free
 OBJDIR		= OBJS
@@ -13,6 +14,7 @@ OBJDIR		= OBJS
 SRCS		= $(SRC_DIR)/main.c \
 			$(MAP)/texture_control.c $(MAP)/map_control.c $(MAP)/map_hole_control.c \
 			$(MAP)/map_file_control.c \
+			$(GAME)/start_game.c \
 			$(UTILS)/utils_one.c $(UTILS)/read_file.c $(UTILS)/utils_two.c \
 			$(UTILS)/init_map_texture.c $(UTILS)/utils_three.c \
 			$(FREE)/ft_free.c

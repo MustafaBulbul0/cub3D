@@ -69,9 +69,6 @@ int	character_control(char c, t_all *all)
 			|| c == 'S' || c == 'E' || c == 'W' || c == '\0'))
 		exit_print("The map is wrong.", all);
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
-	{
 		position++;
-		all->game->player_position = c;
-	}
 	return (position);
 }

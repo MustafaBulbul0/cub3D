@@ -27,6 +27,7 @@ void	texture_control(t_all *all);
 void	read_and_split(char *path, t_all *all);
 void	clear_2d_pointer(char **map);
 char	*ft_realloc(char *s, int size);
+char	**ft_realloc_2d(char **ptr, size_t size);
 void	init_all_structs(t_all *all);
 char	**strdup_2d(char **map);
 void	init_map_texture(t_all *all);
@@ -41,5 +42,7 @@ int		secret_file(char *path);
 void	shut_program_error(t_all *all, char *s);
 void	ft_free_all(t_all *all);
 void	exit_print(char *s, t_all *all);
+
+void	start_game(t_all *all);
 
 #endif

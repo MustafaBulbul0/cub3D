@@ -66,6 +66,34 @@ static int	find_start_index(char **map)
 	return (i);
 }
 
+static char **end_map(char **map, int i, int space)
+{
+	int		j;
+	int		k;
+	char	**n_map;
+
+	n_map = calloc(1, sizeof(char *));
+	if (!n_map)
+		return (NULL);
+	while (map[++i])
+	{
+		k = 0;
+		j = - 1;
+		while (map[i][++j])
+			if (!is_space(map[i][j]))
+				k++;
+		if (k != 0)
+		{
+			n_map = ft_realloc_2d(n_map, (space + 2) * sizeof(char *));
+			if (!n_map)
+				return (NULL);
+			n_map[space] = ft_strdup(map[i]);
+			n_map[++space] = NULL;
+		}
+	}
+	return (n_map);
+}
+
 void	read_map(t_all *all, char *path)
 {
 	int		start_index;
@@ -76,6 +104,6 @@ void	read_map(t_all *all, char *path)
 	map = strdup_2d(all->game->map);
 	start_index = find_start_index(map);
 	clear_2d_pointer(all->game->map);
-	all->game->map = strdup_2d(map + start_index + 1);
+	all->game->map = end_map(map, start_index, 0);
 	clear_2d_pointer(map);
 }

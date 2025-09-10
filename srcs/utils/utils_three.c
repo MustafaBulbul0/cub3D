@@ -41,3 +41,23 @@ int	secret_file(char *path)
 		return (1);
 	return (0);
 }
+
+char	**ft_realloc_2d(char **ptr, size_t size)
+{
+	char	**new_ptr;
+
+	new_ptr = malloc(size);
+	if (!new_ptr)
+		return (NULL);
+	if (ptr)
+	{
+		size_t	i = 0;
+		while (ptr[i])
+		{
+			new_ptr[i] = ptr[i];
+			i++;
+		}
+		free(ptr);
+	}
+	return (new_ptr);
+}
