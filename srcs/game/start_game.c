@@ -19,6 +19,14 @@ static void	player_init(t_all *all)
 			{
 					all->game->player_position[0] = j;
 					all->game->player_position[1] = i;
+					if (map[i][j] == 'E')
+						all->game->player_angle = 0;
+					else if (map[i][j] == 'N')
+						all->game->player_angle = 90;
+					if (map[i][j] == 'W')
+						all->game->player_angle = 180;
+					if (map[i][j] == 'S')
+						all->game->player_angle = 270;
 			}
 			j++;
 		}
@@ -49,8 +57,8 @@ void	start_game(t_all *all)
 {
 	player_init(all);
 	calculate_sin_cos(all);
-	
 	all->mlx->mlx = mlx_init();
-	all->mlx->win = mlx_new_window(all->mlx->mlx, 1920, 1080, "cube3D");
+	all->mlx->win = mlx_new_window(all->mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3D");
+	mlx_key_hook(all->mlx->win, key_press, all);
 	mlx_loop(all->mlx->mlx);
 }

@@ -15,6 +15,8 @@
 # include "../libraries/minilibx-linux/mlx_int.h"
 
 # define Y_PI 3.14159265359
+# define SCREEN_WIDTH 1920
+# define SCREEN_HEIGHT 1080
 
 void	file_control(t_all *all, int ac, char **av);
 t_all	*map_control(int ac, char **av);
@@ -44,5 +46,6 @@ void	ft_free_all(t_all *all);
 void	exit_print(char *s, t_all *all);
 
 void	start_game(t_all *all);
+int	key_press(int keycode, t_all *all);
 
 #endif

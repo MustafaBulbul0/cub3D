@@ -19,6 +19,7 @@ typedef struct s_game
 {
 	char	**map;
 	int		*player_position; // x,y   col,row
+	int		player_angle;
 
 	double	*sin_tab;
 	double	*cos_tab;
