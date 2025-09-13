@@ -18,8 +18,9 @@ typedef struct s_texture
 typedef struct s_game
 {
 	char	**map;
-	int		*player_position; // x,y   col,row
-	int		player_angle;
+	double	player_angle;
+	double	player_x;
+	double	player_y;
 
 	double	*sin_tab;
 	double	*cos_tab;

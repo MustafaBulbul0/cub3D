@@ -6,7 +6,6 @@ static void	player_init(t_all *all)
 	int		j;
 	char	**map;
 
-	all->game->player_position = ft_calloc(2, sizeof(int));
 	map = all->game->map;
 	i = 0;
 	while (map[i])
@@ -17,8 +16,8 @@ static void	player_init(t_all *all)
 			if (map[i][j] == 'N' || map[i][j] == 'S'
 				|| map[i][j] == 'E' || map[i][j] == 'W')
 			{
-					all->game->player_position[0] = j;
-					all->game->player_position[1] = i;
+					all->game->player_x = j + 0.5;
+					all->game->player_y = i + 0.5;
 					if (map[i][j] == 'E')
 						all->game->player_angle = 0;
 					else if (map[i][j] == 'N')
@@ -57,6 +56,7 @@ void	start_game(t_all *all)
 {
 	player_init(all);
 	calculate_sin_cos(all);
+
 	all->mlx->mlx = mlx_init();
 	all->mlx->win = mlx_new_window(all->mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3D");
 	mlx_key_hook(all->mlx->win, key_press, all);

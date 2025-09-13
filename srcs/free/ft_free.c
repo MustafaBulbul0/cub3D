@@ -9,11 +9,6 @@ void	ft_free_game(t_game *game)
 		clear_2d_pointer(game->map);
 		game->map = NULL;
 	}
-	if (game->player_position)
-	{
-		free(game->player_position);
-		game->player_position = NULL;
-	}
 	if (game->sin_tab)
 	{
 		free(game->sin_tab);
