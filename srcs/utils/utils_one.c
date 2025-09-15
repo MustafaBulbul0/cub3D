@@ -37,7 +37,8 @@ char	*ft_realloc(char *s, int size)
 
 void	exit_print(char *s, t_all *all)
 {
-	printf("Error :%s\n", s);
+	if (s)
+		printf("Error :%s\n", s);
 	if (all)
 		ft_free_all(all);
 	exit (EXIT_FAILURE);
@@ -49,6 +50,13 @@ void	init_all_structs(t_all *all)
 	if (!all->game)
 		exit_print("Malloc failed.", all);
 	all->game->map = NULL;
+	all->game->keys.w = 0;
+	all->game->keys.a = 0;
+	all->game->keys.s = 0;
+	all->game->keys.d = 0;
+	all->game->keys.left = 0;
+	all->game->keys.right = 0;
+	all->game->keys.esc = 0;
 	all->texture = malloc(sizeof(t_texture));
 	if (!all->texture)
 		exit_print("Malloc failed.", all);
@@ -63,10 +71,6 @@ void	init_all_structs(t_all *all)
 		exit_print("Malloc failed.", all);
 	all->mlx->mlx = NULL;
 	all->mlx->win = NULL;
-	all->mlx->no_img = NULL;
-	all->mlx->so_img = NULL;
-	all->mlx->we_img = NULL;
-	all->mlx->ea_img = NULL;
 }
 
 int	character_control(char c, t_all *all)

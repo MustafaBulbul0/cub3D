@@ -52,13 +52,28 @@ static void	calculate_sin_cos(t_all *all)
 	all->game->cos_tab = cos_tab;
 }
 
+int	game_loop(t_all *all)
+{
+	handle_movement(all);
+	//render_screen(all);
+	return (0);
+}
+
 void	start_game(t_all *all)
 {
 	player_init(all);
 	calculate_sin_cos(all);
 
 	all->mlx->mlx = mlx_init();
+	if (!all->mlx->mlx)
+		exit_print("MLX initialization failed.", all);
 	all->mlx->win = mlx_new_window(all->mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3D");
-	mlx_key_hook(all->mlx->win, key_press, all);
+	if (!all->mlx->win)
+		exit_print("Window creation failed.", all);
+	load_textures(all);
+	mlx_hook(all->mlx->win, 2, 1L<<0, key_press, all);
+	mlx_hook(all->mlx->win, 3, 1L<<1, key_release, all);
+	mlx_hook(all->mlx->win, 17, 0, close_windows, all);
+	mlx_loop_hook(all->mlx->mlx, game_loop, all);
 	mlx_loop(all->mlx->mlx);
 }

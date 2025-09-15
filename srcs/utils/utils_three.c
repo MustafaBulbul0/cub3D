@@ -61,3 +61,9 @@ char	**ft_realloc_2d(char **ptr, size_t size)
 	}
 	return (new_ptr);
 }
+
+int	close_windows(t_all *all)
+{
+	ft_free_all(all);
+	exit(0);
+}

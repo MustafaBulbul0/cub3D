@@ -42,12 +42,16 @@ int		space_or_end(char c);
 int		character_control(char c, t_all *all);
 void	flood_fill(char **map, int xz[2], int row, int col);
 int		secret_file(char *path);
+int		close_windows(t_all *all);
 
 void	shut_program_error(t_all *all, char *s);
 void	ft_free_all(t_all *all);
 void	exit_print(char *s, t_all *all);
 
 void	start_game(t_all *all);
-int	key_press(int keycode, t_all *all);
+int		key_press(int keycode, t_all *all);
+int		key_release(int keycode, t_all *all);
+void	handle_movement(t_all *all);
+void	load_textures(t_all *all);
 
 #endif

@@ -15,8 +15,9 @@ SRCS		= $(SRC_DIR)/main.c \
 			$(MAP)/texture_control.c $(MAP)/map_control.c $(MAP)/map_hole_control.c \
 			$(MAP)/map_file_control.c \
 			$(GAME)/start_game.c $(GAME)/key_press.c $(GAME)/raycasting.c \
+			$(GAME)/load_textures.c \
 			$(UTILS)/utils_one.c $(UTILS)/read_file.c $(UTILS)/utils_two.c \
-			$(UTILS)/init_map_texture.c $(UTILS)/utils_three.c \
+			$(UTILS)/init_map_texture.c $(UTILS)/utils_three.c $(UTILS)/game_utils.c \
 			$(FREE)/ft_free.c
 
 OBJS		= $(patsubst $(SRC_DIR)/%.c,$(OBJDIR)/%.o,$(SRCS))

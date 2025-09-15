@@ -63,14 +63,6 @@ void	ft_free_mlx(t_mlx *mlx)
 {
 	if (!mlx)
 		return ;
-	if (mlx->no_img && mlx->mlx)
-		mlx_destroy_image(mlx->mlx, mlx->no_img);
-	if (mlx->so_img && mlx->mlx)
-		mlx_destroy_image(mlx->mlx, mlx->so_img);
-	if (mlx->we_img && mlx->mlx)
-		mlx_destroy_image(mlx->mlx, mlx->we_img);
-	if (mlx->ea_img && mlx->mlx)
-		mlx_destroy_image(mlx->mlx, mlx->ea_img);
 	if (mlx->win && mlx->mlx)
 		mlx_destroy_window(mlx->mlx, mlx->win);
 	if (mlx->mlx)

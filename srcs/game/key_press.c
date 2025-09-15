@@ -72,24 +72,32 @@ static void	move_right(t_all *all)
 	}
 }
 
-int	key_press(int keycode, t_all *all)
+void	handle_movement(t_all *all)
 {
-	if (keycode == 65307)
+	if (all->game->keys.esc)
 	{
 		ft_free_all(all);
-		exit (0);
+		exit(0);
 	}
-	else if (keycode == 119)
+	if (all->game->keys.w)
 		move_forward(all);
-	else if (keycode == 115)
+	if (all->game->keys.s)
 		move_backward(all);
-	else if (keycode == 97)
+	if (all->game->keys.a)
 		move_left(all);
-	else if (keycode == 100)
+	if (all->game->keys.d)
 		move_right(all);
-	else if (keycode == 65361)
-		all->game->player_angle -= ROTATE_SPEED * Y_PI / 180;
-	else if (keycode == 65363)
-		all->game->player_angle += ROTATE_SPEED * Y_PI / 180;
-	return (0);
+	if (all->game->keys.left)
+	{
+		all->game->player_angle -= ROTATE_SPEED;
+		if (all->game->player_angle < 0)
+			all->game->player_angle += 360;
+	}
+	if (all->game->keys.right)
+	{
+		all->game->player_angle += ROTATE_SPEED;
+		if (all->game->player_angle >= 360)
+			all->game->player_angle -= 360;
+	}
 }
+
