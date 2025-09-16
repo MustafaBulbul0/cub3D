@@ -21,11 +21,11 @@ static void	player_init(t_all *all)
 					if (map[i][j] == 'E')
 						all->game->player_angle = 0;
 					else if (map[i][j] == 'N')
-						all->game->player_angle = 90;
+						all->game->player_angle = 270;
 					if (map[i][j] == 'W')
 						all->game->player_angle = 180;
 					if (map[i][j] == 'S')
-						all->game->player_angle = 270;
+						all->game->player_angle = 90;
 			}
 			j++;
 		}
@@ -55,7 +55,7 @@ static void	calculate_sin_cos(t_all *all)
 int	game_loop(t_all *all)
 {
 	handle_movement(all);
-	//render_screen(all);
+
 	return (0);
 }
 

@@ -14,7 +14,7 @@ void	file_control(t_all *all, int ac, char **av)
 		exit_print("The map file format is incorrect.", all);
 	while (s[i + 4])
 		i++;
-	if (ft_strncmp(&s[i], ".cub", 4))
+	if (ft_strncmp(&s[i], ".cub", 4) != 0)
 		exit_print("The map file format is incorrect.", all);
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1)

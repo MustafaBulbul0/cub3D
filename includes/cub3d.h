@@ -53,5 +53,6 @@ int		key_press(int keycode, t_all *all);
 int		key_release(int keycode, t_all *all);
 void	handle_movement(t_all *all);
 void	load_textures(t_all *all);
+void	render_screen(t_all *all);
 
 #endif

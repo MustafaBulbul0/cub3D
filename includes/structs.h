@@ -75,6 +75,7 @@ typedef struct s_all
 	t_game		*game;
 	t_texture	*texture;
 	t_mlx		*mlx;
+	t_ray		*ray;
 }	t_all;
 
 #endif
