@@ -66,17 +66,15 @@ static void	load_no(t_all *all)
 
 void	load_textures(t_all *all)
 {
-	all->mlx->no_texture = malloc(sizeof(t_image));
-	all->mlx->so_texture = malloc(sizeof(t_image));
-	all->mlx->we_texture = malloc(sizeof(t_image));
-	all->mlx->ea_texture = malloc(sizeof(t_image));
-	all->mlx->screen = malloc(sizeof(t_image));
-
+	all->mlx->no_texture = ft_calloc(1, sizeof(t_image));
+	all->mlx->so_texture = ft_calloc(1, sizeof(t_image));
+	all->mlx->we_texture = ft_calloc(1, sizeof(t_image));
+	all->mlx->ea_texture = ft_calloc(1, sizeof(t_image));
+	all->mlx->screen = ft_calloc(1, sizeof(t_image));
 	load_no(all);
 	load_so(all);
 	load_we(all);
 	load_ea(all);
-
 	all->mlx->screen->img = mlx_new_image(all->mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	all->mlx->screen->addr = mlx_get_data_addr(all->mlx->screen->img,
 		&all->mlx->screen->bits_per_pixel, 

@@ -63,10 +63,45 @@ void	ft_free_mlx(t_mlx *mlx)
 {
 	if (!mlx)
 		return ;
+	
+	// Free texture images
+	if (mlx->no_texture)
+	{
+		if (mlx->no_texture->img && mlx->mlx)
+			mlx_destroy_image(mlx->mlx, mlx->no_texture->img);
+		free(mlx->no_texture);
+	}
+	if (mlx->so_texture)
+	{
+		if (mlx->so_texture->img && mlx->mlx)
+			mlx_destroy_image(mlx->mlx, mlx->so_texture->img);
+		free(mlx->so_texture);
+	}
+	if (mlx->we_texture)
+	{
+		if (mlx->we_texture->img && mlx->mlx)
+			mlx_destroy_image(mlx->mlx, mlx->we_texture->img);
+		free(mlx->we_texture);
+	}
+	if (mlx->ea_texture)
+	{
+		if (mlx->ea_texture->img && mlx->mlx)
+			mlx_destroy_image(mlx->mlx, mlx->ea_texture->img);
+		free(mlx->ea_texture);
+	}
+	if (mlx->screen)
+	{
+		if (mlx->screen->img && mlx->mlx)
+			mlx_destroy_image(mlx->mlx, mlx->screen->img);
+		free(mlx->screen);
+	}
+	
+	// Free MLX resources
 	if (mlx->win && mlx->mlx)
 		mlx_destroy_window(mlx->mlx, mlx->win);
 	if (mlx->mlx)
 		mlx_destroy_display(mlx->mlx);
+	
 	free(mlx);
 }
 

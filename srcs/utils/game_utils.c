@@ -37,3 +37,26 @@ int	key_release(int keycode, t_all *all)
 		all->game->keys.right = 0;
 	return (0);
 }
+
+void	my_mlx_pixel_put(t_image *img, int x, int y, int color)
+{
+	char	*dst;
+
+	if (x >= 0 && x < img->width && y >= 0 && y < img->height)
+	{
+		dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+		*(unsigned int*)dst = color;
+	}
+}
+
+int	get_texture_color(t_image *texture, int x, int y)
+{
+	char	*pixel;
+
+	if (x >= 0 && x < texture->width && y >= 0 && y < texture->height)
+	{
+		pixel = texture->addr + (y * texture->line_length + x * (texture->bits_per_pixel / 8));
+		return (*(int*)pixel);
+	}
+	return (0);
+}

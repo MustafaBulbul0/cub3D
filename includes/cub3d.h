@@ -17,6 +17,7 @@
 # define Y_PI 3.14159265359
 # define SCREEN_WIDTH 1920
 # define SCREEN_HEIGHT 1080
+# define VIEWING_ANGLE 60
 # define ROTATE_SPEED 3
 # define MOVE_SPEED 0.1
 
@@ -43,6 +44,8 @@ int		character_control(char c, t_all *all);
 void	flood_fill(char **map, int xz[2], int row, int col);
 int		secret_file(char *path);
 int		close_windows(t_all *all);
+int		get_texture_color(t_image *texture, int x, int y);
+void	my_mlx_pixel_put(t_image *img, int x, int y, int color);
 
 void	shut_program_error(t_all *all, char *s);
 void	ft_free_all(t_all *all);
@@ -54,5 +57,6 @@ int		key_release(int keycode, t_all *all);
 void	handle_movement(t_all *all);
 void	load_textures(t_all *all);
 void	render_screen(t_all *all);
+t_ray	cast_single_ray(t_all *all, double ray_dir_x, double ray_dir_y);
 
 #endif

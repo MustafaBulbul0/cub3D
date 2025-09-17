@@ -46,10 +46,12 @@ void	exit_print(char *s, t_all *all)
 
 void	init_all_structs(t_all *all)
 {
-	all->game = malloc(sizeof(t_game));
+	all->game = ft_calloc(1, sizeof(t_game));
 	if (!all->game)
 		exit_print("Malloc failed.", all);
 	all->game->map = NULL;
+	all->game->sin_tab = NULL;
+	all->game->cos_tab = NULL;
 	all->game->keys.w = 0;
 	all->game->keys.a = 0;
 	all->game->keys.s = 0;
@@ -57,7 +59,7 @@ void	init_all_structs(t_all *all)
 	all->game->keys.left = 0;
 	all->game->keys.right = 0;
 	all->game->keys.esc = 0;
-	all->texture = malloc(sizeof(t_texture));
+	all->texture = ft_calloc(1, sizeof(t_texture));
 	if (!all->texture)
 		exit_print("Malloc failed.", all);
 	all->texture->no = NULL;
@@ -66,11 +68,16 @@ void	init_all_structs(t_all *all)
 	all->texture->ea = NULL;
 	all->texture->f = NULL;
 	all->texture->c = NULL;
-	all->mlx = malloc(sizeof(t_mlx));
+	all->mlx = ft_calloc(1, sizeof(t_mlx));
 	if (!all->mlx)
 		exit_print("Malloc failed.", all);
 	all->mlx->mlx = NULL;
 	all->mlx->win = NULL;
+	all->mlx->no_texture = NULL;
+	all->mlx->so_texture = NULL;
+	all->mlx->we_texture = NULL;
+	all->mlx->ea_texture = NULL;
+	all->mlx->screen = NULL;
 }
 
 int	character_control(char c, t_all *all)

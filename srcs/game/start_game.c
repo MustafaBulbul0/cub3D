@@ -55,7 +55,7 @@ static void	calculate_sin_cos(t_all *all)
 int	game_loop(t_all *all)
 {
 	handle_movement(all);
-
+	render_screen(all);
 	return (0);
 }
 
