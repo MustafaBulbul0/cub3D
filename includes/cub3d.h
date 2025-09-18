@@ -5,7 +5,6 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <string.h>   
 # include <sys/time.h>
 # include <math.h>
 # include <errno.h>
@@ -19,7 +18,7 @@
 # define SCREEN_HEIGHT 1080
 # define VIEWING_ANGLE 60
 # define ROTATE_SPEED 3
-# define MOVE_SPEED 0.1
+# define MOVE_SPEED 0.07
 
 void	file_control(t_all *all, int ac, char **av);
 t_all	*map_control(int ac, char **av);

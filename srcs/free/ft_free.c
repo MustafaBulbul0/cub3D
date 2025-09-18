@@ -9,16 +9,6 @@ void	ft_free_game(t_game *game)
 		clear_2d_pointer(game->map);
 		game->map = NULL;
 	}
-	if (game->sin_tab)
-	{
-		free(game->sin_tab);
-		game->sin_tab = NULL;
-	}
-	if (game->cos_tab)
-	{
-		free(game->cos_tab);
-		game->cos_tab = NULL;
-	}
 	free(game);
 }
 
@@ -63,8 +53,6 @@ void	ft_free_mlx(t_mlx *mlx)
 {
 	if (!mlx)
 		return ;
-	
-	// Free texture images
 	if (mlx->no_texture)
 	{
 		if (mlx->no_texture->img && mlx->mlx)
@@ -95,8 +83,6 @@ void	ft_free_mlx(t_mlx *mlx)
 			mlx_destroy_image(mlx->mlx, mlx->screen->img);
 		free(mlx->screen);
 	}
-	
-	// Free MLX resources
 	if (mlx->win && mlx->mlx)
 		mlx_destroy_window(mlx->mlx, mlx->win);
 	if (mlx->mlx)

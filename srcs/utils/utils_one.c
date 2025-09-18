@@ -50,8 +50,6 @@ void	init_all_structs(t_all *all)
 	if (!all->game)
 		exit_print("Malloc failed.", all);
 	all->game->map = NULL;
-	all->game->sin_tab = NULL;
-	all->game->cos_tab = NULL;
 	all->game->keys.w = 0;
 	all->game->keys.a = 0;
 	all->game->keys.s = 0;
@@ -59,6 +57,7 @@ void	init_all_structs(t_all *all)
 	all->game->keys.left = 0;
 	all->game->keys.right = 0;
 	all->game->keys.esc = 0;
+	all->game->keys.shift = 0;
 	all->texture = ft_calloc(1, sizeof(t_texture));
 	if (!all->texture)
 		exit_print("Malloc failed.", all);

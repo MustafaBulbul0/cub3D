@@ -16,6 +16,8 @@ int	key_press(int keycode, t_all *all)
 		all->game->keys.left = 1;
 	else if (keycode == 65363)
 		all->game->keys.right = 1;
+	else if (keycode == 65505)
+		all->game->keys.shift = 1;
 	return (0);
 }
 
@@ -35,6 +37,8 @@ int	key_release(int keycode, t_all *all)
 		all->game->keys.left = 0;
 	else if (keycode == 65363)
 		all->game->keys.right = 0;
+	else if (keycode == 65505)
+		all->game->keys.shift = 0;
 	return (0);
 }
 

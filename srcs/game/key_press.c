@@ -5,10 +5,14 @@ static void	move_forward(t_all *all)
 	double	new_x;
 	double	new_y;
 	double	rad;
+	double	speed;
 
+	speed = MOVE_SPEED;
+	if (all->game->keys.shift)
+		speed *= 2;
 	rad = all->game->player_angle * Y_PI / 180;
-	new_x = all->game->player_x + cos(rad) * MOVE_SPEED;
-	new_y = all->game->player_y + sin(rad) * MOVE_SPEED;
+	new_x = all->game->player_x + cos(rad) * speed;
+	new_y = all->game->player_y + sin(rad) * speed;
 	if ((int)new_y >= 0 && all->game->map[(int)new_y] &&
 		(int)new_x >= 0 && (int)new_x < (int)ft_strlen(all->game->map[(int)new_y]) &&
 		all->game->map[(int)new_y][(int)new_x] != '1')
@@ -23,10 +27,14 @@ static void	move_backward(t_all *all)
 	double	new_x;
 	double	new_y;
 	double	rad;
+	double	speed;
 
+	speed = MOVE_SPEED;
+	if (all->game->keys.shift)
+		speed *= 2;
 	rad = all->game->player_angle * Y_PI / 180;	
-	new_x = all->game->player_x - cos(rad) * MOVE_SPEED;
-	new_y = all->game->player_y - sin(rad) * MOVE_SPEED;
+	new_x = all->game->player_x - cos(rad) * speed;
+	new_y = all->game->player_y - sin(rad) * speed;
 	if ((int)new_y >= 0 && all->game->map[(int)new_y] &&
 		(int)new_x >= 0 && (int)new_x < (int)ft_strlen(all->game->map[(int)new_y]) &&
 		all->game->map[(int)new_y][(int)new_x] != '1')

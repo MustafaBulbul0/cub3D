@@ -149,8 +149,8 @@ static void	draw_wall_column(t_all *all, int x, t_ray ray,
 void	cast_rays(t_all *all)
 {
 	int		x;
-	double	camera_x;
 	t_ray	ray;
+	double	camera_x;
 	double	dir_x;
 	double	dir_y;
 	double	plane_x;

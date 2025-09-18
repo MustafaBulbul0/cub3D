@@ -1,13 +1,9 @@
 #include "../../includes/cub3d.h"
 
-static void	player_init(t_all *all)
+static void	player_init(t_all *all, char **map, int i)
 {
-	int		i;
 	int		j;
-	char	**map;
 
-	map = all->game->map;
-	i = 0;
 	while (map[i])
 	{
 		j = 0;
@@ -33,25 +29,6 @@ static void	player_init(t_all *all)
 	}
 }
 
-static void	calculate_sin_cos(t_all *all)
-{
-	double	*sin_tab;
-	double	*cos_tab;
-	int	i;
-
-	sin_tab = malloc(360 * sizeof(double));
-	cos_tab = malloc(360 * sizeof(double));
-	i = 0;
-	while (i < 360)
-	{
-		sin_tab[i] = sin(Y_PI * i / 180);
-		cos_tab[i] = cos(Y_PI * i / 180);
-		i++;
-	}
-	all->game->sin_tab = sin_tab;
-	all->game->cos_tab = cos_tab;
-}
-
 int	game_loop(t_all *all)
 {
 	handle_movement(all);
@@ -61,9 +38,7 @@ int	game_loop(t_all *all)
 
 void	start_game(t_all *all)
 {
-	player_init(all);
-	calculate_sin_cos(all);
-
+	player_init(all, all->game->map, 0);
 	all->mlx->mlx = mlx_init();
 	if (!all->mlx->mlx)
 		exit_print("MLX initialization failed.", all);

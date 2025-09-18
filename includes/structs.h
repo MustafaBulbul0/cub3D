@@ -24,6 +24,7 @@ typedef struct s_keys
 	int	left;
 	int	right;
 	int	esc;
+	int	shift;
 }	t_keys;
 
 typedef struct s_ray
@@ -55,8 +56,6 @@ typedef struct s_game
 	double	player_y;
 
 	t_keys	keys;
-	double	*sin_tab;
-	double	*cos_tab;
 }	t_game;
 
 typedef struct s_image
