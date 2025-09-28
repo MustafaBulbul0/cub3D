@@ -57,5 +57,6 @@ void	handle_movement(t_all *all);
 void	load_textures(t_all *all);
 void	render_screen(t_all *all);
 t_ray	cast_single_ray(t_all *all, double ray_dir_x, double ray_dir_y);
+int		mouse_move(int x, int y, t_all *all);
 
 #endif

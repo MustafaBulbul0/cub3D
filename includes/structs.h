@@ -54,6 +54,7 @@ typedef struct s_game
 	double	player_angle;
 	double	player_x;
 	double	player_y;
+	int		first_move;
 
 	t_keys	keys;
 }	t_game;

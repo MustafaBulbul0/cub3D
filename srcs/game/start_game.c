@@ -46,8 +46,11 @@ void	start_game(t_all *all)
 	if (!all->mlx->win)
 		exit_print("Window creation failed.", all);
 	load_textures(all);
+	mlx_mouse_hide(all->mlx->mlx, all->mlx->win);
+    mlx_mouse_move(all->mlx->mlx, all->mlx->win, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 	mlx_hook(all->mlx->win, 2, 1L<<0, key_press, all);
 	mlx_hook(all->mlx->win, 3, 1L<<1, key_release, all);
+	mlx_hook(all->mlx->win, 6, 1L<<6, mouse_move, all);
 	mlx_hook(all->mlx->win, 17, 0, close_windows, all);
 	mlx_loop_hook(all->mlx->mlx, game_loop, all);
 	mlx_loop(all->mlx->mlx);

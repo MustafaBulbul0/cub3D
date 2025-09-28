@@ -50,6 +50,7 @@ void	init_all_structs(t_all *all)
 	if (!all->game)
 		exit_print("Malloc failed.", all);
 	all->game->map = NULL;
+	all->game->first_move = 1;
 	all->game->keys.w = 0;
 	all->game->keys.a = 0;
 	all->game->keys.s = 0;
