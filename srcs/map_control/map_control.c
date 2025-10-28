@@ -16,7 +16,6 @@ t_all	*map_control(int ac, char **av)
 	map_character(all);
 	wall_control(all);
 	is_single_map(all);
-	hole_control(all);
 	return (all);
 }
 

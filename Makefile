@@ -12,7 +12,7 @@ FREE		= srcs/free
 OBJDIR		= OBJS
 
 SRCS		= $(SRC_DIR)/main.c \
-			$(MAP)/texture_control.c $(MAP)/map_control.c $(MAP)/map_hole_control.c \
+			$(MAP)/texture_control.c $(MAP)/map_control.c \
 			$(MAP)/map_file_control.c \
 			$(GAME)/start_game.c $(GAME)/key_press.c $(GAME)/raycasting.c \
 			$(GAME)/load_textures.c $(GAME)/cast_single_ray.c $(GAME)/bonus.c \

@@ -25,7 +25,6 @@ t_all	*map_control(int ac, char **av);
 void	map_character(t_all *all);
 void	wall_control(t_all *all);
 void	is_single_map(t_all *all);
-void	hole_control(t_all *all);
 void	texture_control(t_all *all);
 
 void	read_and_split(char *path, t_all *all);
