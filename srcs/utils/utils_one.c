@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_one.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mubulbul <mubulbul@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/19 12:21:40 by mubulbul          #+#    #+#             */
+/*   Updated: 2026/04/19 12:44:50 by mubulbul         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3d.h"
 
 void	clear_2d_pointer(char **map)
@@ -44,7 +56,7 @@ void	exit_print(char *s, t_all *all)
 	exit (EXIT_FAILURE);
 }
 
-void	init_all_structs(t_all *all)
+static void	init_game_struct(t_all *all)
 {
 	all->game = ft_calloc(1, sizeof(t_game));
 	if (!all->game)
@@ -59,6 +71,11 @@ void	init_all_structs(t_all *all)
 	all->game->keys.right = 0;
 	all->game->keys.esc = 0;
 	all->game->keys.shift = 0;
+}
+
+void	init_all_structs(t_all *all)
+{
+	init_game_struct(all);
 	all->texture = ft_calloc(1, sizeof(t_texture));
 	if (!all->texture)
 		exit_print("Malloc failed.", all);
@@ -78,17 +95,4 @@ void	init_all_structs(t_all *all)
 	all->mlx->we_texture = NULL;
 	all->mlx->ea_texture = NULL;
 	all->mlx->screen = NULL;
-}
-
-int	character_control(char c, t_all *all)
-{
-	int	position;
-
-	position = 0;
-	if (!(c == '1' || c == '0' || is_space(c) || c == 'N'
-			|| c == 'S' || c == 'E' || c == 'W' || c == '\0'))
-		exit_print("The map is wrong.", all);
-	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
-		position++;
-	return (position);
 }

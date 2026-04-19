@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   start_game.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mubulbul <mubulbul@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/19 13:10:38 by mubulbul          #+#    #+#             */
+/*   Updated: 2026/04/19 13:10:39 by mubulbul         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3d.h"
 
 static void	player_init(t_all *all, char **map, int i)
@@ -12,16 +24,16 @@ static void	player_init(t_all *all, char **map, int i)
 			if (map[i][j] == 'N' || map[i][j] == 'S'
 				|| map[i][j] == 'E' || map[i][j] == 'W')
 			{
-					all->game->player_x = j + 0.5;
-					all->game->player_y = i + 0.5;
-					if (map[i][j] == 'E')
-						all->game->player_angle = 0;
-					else if (map[i][j] == 'N')
-						all->game->player_angle = 270;
-					if (map[i][j] == 'W')
-						all->game->player_angle = 180;
-					if (map[i][j] == 'S')
-						all->game->player_angle = 90;
+				all->game->player_x = j + 0.5;
+				all->game->player_y = i + 0.5;
+				if (map[i][j] == 'E')
+					all->game->player_angle = 0;
+				else if (map[i][j] == 'N')
+					all->game->player_angle = 270;
+				if (map[i][j] == 'W')
+					all->game->player_angle = 180;
+				if (map[i][j] == 'S')
+					all->game->player_angle = 90;
 			}
 			j++;
 		}
@@ -42,15 +54,17 @@ void	start_game(t_all *all)
 	all->mlx->mlx = mlx_init();
 	if (!all->mlx->mlx)
 		exit_print("MLX initialization failed.", all);
-	all->mlx->win = mlx_new_window(all->mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3D");
+	all->mlx->win = mlx_new_window(all->mlx->mlx,
+			SCREEN_WIDTH, SCREEN_HEIGHT, "cub3D");
 	if (!all->mlx->win)
 		exit_print("Window creation failed.", all);
 	load_textures(all);
 	mlx_mouse_hide(all->mlx->mlx, all->mlx->win);
-    mlx_mouse_move(all->mlx->mlx, all->mlx->win, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
-	mlx_hook(all->mlx->win, 2, 1L<<0, key_press, all);
-	mlx_hook(all->mlx->win, 3, 1L<<1, key_release, all);
-	mlx_hook(all->mlx->win, 6, 1L<<6, mouse_move, all);
+	mlx_mouse_move(all->mlx->mlx, all->mlx->win,
+		SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+	mlx_hook(all->mlx->win, 2, 1L << 0, key_press, all);
+	mlx_hook(all->mlx->win, 3, 1L << 1, key_release, all);
+	mlx_hook(all->mlx->win, 6, 1L << 6, mouse_move, all);
 	mlx_hook(all->mlx->win, 17, 0, close_windows, all);
 	mlx_loop_hook(all->mlx->mlx, game_loop, all);
 	mlx_loop(all->mlx->mlx);

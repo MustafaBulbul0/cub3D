@@ -1,4 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mubulbul <mubulbul@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/19 13:41:16 by mubulbul          #+#    #+#             */
+/*   Updated: 2026/04/19 13:45:25 by mubulbul         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3d.h"
+
+static void	destroy_image(t_mlx *mlx, t_image **img)
+{
+	if (!*img)
+		return ;
+	if ((*img)->img && mlx->mlx)
+		mlx_destroy_image(mlx->mlx, (*img)->img);
+	free(*img);
+	*img = NULL;
+}
 
 void	ft_free_game(t_game *game)
 {
@@ -17,35 +39,17 @@ void	ft_free_texture(t_texture *texture)
 	if (!texture)
 		return ;
 	if (texture->no)
-	{
 		free(texture->no);
-		texture->no = NULL;
-	}
 	if (texture->so)
-	{
 		free(texture->so);
-		texture->so = NULL;
-	}
 	if (texture->we)
-	{
 		free(texture->we);
-		texture->we = NULL;
-	}
 	if (texture->ea)
-	{
 		free(texture->ea);
-		texture->ea = NULL;
-	}
 	if (texture->f)
-	{
 		free(texture->f);
-		texture->f = NULL;
-	}
 	if (texture->c)
-	{
 		free(texture->c);
-		texture->c = NULL;
-	}
 	free(texture);
 }
 
@@ -53,41 +57,15 @@ void	ft_free_mlx(t_mlx *mlx)
 {
 	if (!mlx)
 		return ;
-	if (mlx->no_texture)
-	{
-		if (mlx->no_texture->img && mlx->mlx)
-			mlx_destroy_image(mlx->mlx, mlx->no_texture->img);
-		free(mlx->no_texture);
-	}
-	if (mlx->so_texture)
-	{
-		if (mlx->so_texture->img && mlx->mlx)
-			mlx_destroy_image(mlx->mlx, mlx->so_texture->img);
-		free(mlx->so_texture);
-	}
-	if (mlx->we_texture)
-	{
-		if (mlx->we_texture->img && mlx->mlx)
-			mlx_destroy_image(mlx->mlx, mlx->we_texture->img);
-		free(mlx->we_texture);
-	}
-	if (mlx->ea_texture)
-	{
-		if (mlx->ea_texture->img && mlx->mlx)
-			mlx_destroy_image(mlx->mlx, mlx->ea_texture->img);
-		free(mlx->ea_texture);
-	}
-	if (mlx->screen)
-	{
-		if (mlx->screen->img && mlx->mlx)
-			mlx_destroy_image(mlx->mlx, mlx->screen->img);
-		free(mlx->screen);
-	}
+	destroy_image(mlx, &mlx->no_texture);
+	destroy_image(mlx, &mlx->so_texture);
+	destroy_image(mlx, &mlx->we_texture);
+	destroy_image(mlx, &mlx->ea_texture);
+	destroy_image(mlx, &mlx->screen);
 	if (mlx->win && mlx->mlx)
 		mlx_destroy_window(mlx->mlx, mlx->win);
 	if (mlx->mlx)
 		mlx_destroy_display(mlx->mlx);
-	
 	free(mlx);
 }
 
@@ -111,11 +89,4 @@ void	ft_free_all(t_all *all)
 		all->mlx = NULL;
 	}
 	free(all);
-}
-
-void	shut_program_error(t_all *all, char *s)
-{
-	ft_free_all(all);
-	printf("%s\n", s);
-	exit(EXIT_FAILURE);
 }

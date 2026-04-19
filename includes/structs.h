@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   structs.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mubulbul <mubulbul@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/19 14:12:18 by mubulbul          #+#    #+#             */
+/*   Updated: 2026/04/19 14:12:43 by mubulbul         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
@@ -11,8 +23,8 @@ typedef struct s_texture
 	char	*f;
 	char	*c;
 
-	int	f_color[3];
-	int	c_color[3];
+	int		f_color[3];
+	int		c_color[3];
 }	t_texture;
 
 typedef struct s_keys
@@ -87,5 +99,17 @@ typedef struct s_all
 	t_texture	*texture;
 	t_mlx		*mlx;
 }	t_all;
+
+typedef struct s_wall
+{
+	int		x;
+	int		wall_start;
+	int		wall_end;
+	int		wall_height;
+	int		tex_x;
+	double	ray_dir[2];
+	t_ray	ray;
+	t_image	*texture;
+}	t_wall;
 
 #endif

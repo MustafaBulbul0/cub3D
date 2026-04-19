@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   game_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mubulbul <mubulbul@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/19 12:13:30 by mubulbul          #+#    #+#             */
+/*   Updated: 2026/04/19 12:13:31 by mubulbul         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3d.h"
 
 int	key_press(int keycode, t_all *all)
@@ -45,22 +57,26 @@ int	key_release(int keycode, t_all *all)
 void	my_mlx_pixel_put(t_image *img, int x, int y, int color)
 {
 	char	*dst;
+	int		a;
 
 	if (x >= 0 && x < img->width && y >= 0 && y < img->height)
 	{
-		dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
-		*(unsigned int*)dst = color;
+		a = img->bits_per_pixel / 8;
+		dst = img->addr + (y * img->line_length + x * a);
+		*(unsigned int *)dst = color;
 	}
 }
 
 int	get_texture_color(t_image *texture, int x, int y)
 {
 	char	*pixel;
+	int		a;
 
 	if (x >= 0 && x < texture->width && y >= 0 && y < texture->height)
 	{
-		pixel = texture->addr + (y * texture->line_length + x * (texture->bits_per_pixel / 8));
-		return (*(int*)pixel);
+		a = texture->bits_per_pixel / 8;
+		pixel = texture->addr + (y * texture->line_length + x * a);
+		return (*(int *)pixel);
 	}
 	return (0);
 }

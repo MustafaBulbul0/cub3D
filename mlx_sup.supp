@@ -1,0 +1,59 @@
+# =========================
+# X11 (libX11) allocations
+# =========================
+{
+   x11_all
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   obj:*/libX11.so*
+}
+
+# =========================
+# Xcursor (used by mlx_mouse_hide)
+# =========================
+{
+   xcursor_all
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   obj:*/libXcursor.so*
+}
+
+# =========================
+# MiniLibX itself
+# =========================
+{
+   mlx_all
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   obj:*libmlx*
+}
+
+{
+   mlx_binary
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:mlx_*
+}
+
+# =========================
+# Dynamic loader (ld-linux / dlopen)
+# =========================
+{
+   ld_so_malloc
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:_dl_*
+}
+
+{
+   dlopen_related
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:dlopen*
+}

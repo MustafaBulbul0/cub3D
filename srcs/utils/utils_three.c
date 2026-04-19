@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_three.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mubulbul <mubulbul@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/19 12:46:14 by mubulbul          #+#    #+#             */
+/*   Updated: 2026/04/19 12:46:15 by mubulbul         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3d.h"
 #include <stdio.h>
 
@@ -45,13 +57,14 @@ int	secret_file(char *path)
 char	**ft_realloc_2d(char **ptr, size_t size)
 {
 	char	**new_ptr;
+	size_t	i;
 
 	new_ptr = malloc(size);
 	if (!new_ptr)
 		return (NULL);
 	if (ptr)
 	{
-		size_t	i = 0;
+		i = 0;
 		while (ptr[i])
 		{
 			new_ptr[i] = ptr[i];
@@ -66,4 +79,17 @@ int	close_windows(t_all *all)
 {
 	ft_free_all(all);
 	exit(0);
+}
+
+int	character_control(char c, t_all *all)
+{
+	int	position;
+
+	position = 0;
+	if (!(c == '1' || c == '0' || is_space(c) || c == 'N'
+			|| c == 'S' || c == 'E' || c == 'W' || c == '\0'))
+		exit_print("The map is wrong.", all);
+	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
+		position++;
+	return (position);
 }

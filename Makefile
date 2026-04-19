@@ -15,10 +15,11 @@ SRCS		= $(SRC_DIR)/main.c \
 			$(MAP)/texture_control.c $(MAP)/map_control.c \
 			$(MAP)/map_file_control.c \
 			$(GAME)/start_game.c $(GAME)/key_press.c $(GAME)/raycasting.c \
+			$(GAME)/raycasting_wall.c $(GAME)/raycasting_pixels.c \
 			$(GAME)/load_textures.c $(GAME)/cast_single_ray.c $(GAME)/bonus.c \
 			$(UTILS)/utils_one.c $(UTILS)/read_file.c $(UTILS)/utils_two.c \
 			$(UTILS)/init_map_texture.c $(UTILS)/utils_three.c $(UTILS)/game_utils.c \
-			$(FREE)/ft_free.c
+			$(FREE)/ft_free.c $(FREE)/shut_program_error.c
 
 OBJS		= $(patsubst $(SRC_DIR)/%.c,$(OBJDIR)/%.o,$(SRCS))
 
@@ -26,6 +27,8 @@ LIBFT		= libraries/libft/libft.a
 MLX			= libraries/minilibx-linux/libmlx.a
 
 MLX_FLAGS	= -Llibraries/minilibx-linux -lmlx -lXext -lX11 -lm -lz
+
+#MAP			= ./maps/valid/cheese_maze.cub
 
 all: $(NAME)
 
@@ -44,6 +47,10 @@ $(LIBFT):
 
 $(MLX):
 	$(MAKE) -C libraries/minilibx-linux
+
+#valgrind: all
+#	valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes \
+		--errors-for-leak-kinds=all ./$(NAME) $(MAP)
 
 clean:
 	$(RM) -r $(OBJDIR)

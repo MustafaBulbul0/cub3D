@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mubulbul <mubulbul@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/19 14:12:09 by mubulbul          #+#    #+#             */
+/*   Updated: 2026/04/19 14:12:10 by mubulbul         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 # define CUB3D_H
 
@@ -57,5 +69,7 @@ void	load_textures(t_all *all);
 void	render_screen(t_all *all);
 t_ray	cast_single_ray(t_all *all, double ray_dir_x, double ray_dir_y);
 int		mouse_move(int x, int y, t_all *all);
+void	init_wall_draw(t_all *all, t_wall *wall, double ray_dir[2]);
+void	draw_wall_column(t_all *all, t_wall *wall);
 
 #endif

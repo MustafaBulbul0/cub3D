@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   key_press.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mubulbul <mubulbul@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/19 13:03:06 by mubulbul          #+#    #+#             */
+/*   Updated: 2026/04/19 13:03:07 by mubulbul         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3d.h"
 
 static void	move_forward(t_all *all)
@@ -13,9 +25,10 @@ static void	move_forward(t_all *all)
 	rad = all->game->player_angle * Y_PI / 180;
 	new_x = all->game->player_x + cos(rad) * speed;
 	new_y = all->game->player_y + sin(rad) * speed;
-	if ((int)new_y >= 0 && all->game->map[(int)new_y] &&
-		(int)new_x >= 0 && (int)new_x < (int)ft_strlen(all->game->map[(int)new_y]) &&
-		all->game->map[(int)new_y][(int)new_x] != '1')
+	if ((int)new_y >= 0 && all->game->map[(int)new_y]
+		&& (int)new_x >= 0
+		&& (int)new_x < (int)ft_strlen(all->game->map[(int)new_y])
+		&& all->game->map[(int)new_y][(int)new_x] != '1')
 	{
 		all->game->player_x = new_x;
 		all->game->player_y = new_y;
@@ -32,12 +45,13 @@ static void	move_backward(t_all *all)
 	speed = MOVE_SPEED;
 	if (all->game->keys.shift)
 		speed *= 2;
-	rad = all->game->player_angle * Y_PI / 180;	
+	rad = all->game->player_angle * Y_PI / 180;
 	new_x = all->game->player_x - cos(rad) * speed;
 	new_y = all->game->player_y - sin(rad) * speed;
-	if ((int)new_y >= 0 && all->game->map[(int)new_y] &&
-		(int)new_x >= 0 && (int)new_x < (int)ft_strlen(all->game->map[(int)new_y]) &&
-		all->game->map[(int)new_y][(int)new_x] != '1')
+	if ((int)new_y >= 0 && all->game->map[(int)new_y]
+		&& (int)new_x >= 0
+		&& (int)new_x < (int)ft_strlen(all->game->map[(int)new_y])
+		&& all->game->map[(int)new_y][(int)new_x] != '1')
 	{
 		all->game->player_x = new_x;
 		all->game->player_y = new_y;
@@ -53,9 +67,10 @@ static void	move_left(t_all *all)
 	rad = (all->game->player_angle - 90) * Y_PI / 180;
 	new_x = all->game->player_x + cos(rad) * MOVE_SPEED;
 	new_y = all->game->player_y + sin(rad) * MOVE_SPEED;
-	if ((int)new_y >= 0 && all->game->map[(int)new_y] &&
-		(int)new_x >= 0 && (int)new_x < (int)ft_strlen(all->game->map[(int)new_y]) &&
-		all->game->map[(int)new_y][(int)new_x] != '1')
+	if ((int)new_y >= 0 && all->game->map[(int)new_y]
+		&& (int)new_x >= 0
+		&& (int)new_x < (int)ft_strlen(all->game->map[(int)new_y])
+		&& all->game->map[(int)new_y][(int)new_x] != '1')
 	{
 		all->game->player_x = new_x;
 		all->game->player_y = new_y;
@@ -71,9 +86,10 @@ static void	move_right(t_all *all)
 	rad = (all->game->player_angle + 90) * Y_PI / 180;
 	new_x = all->game->player_x + cos(rad) * MOVE_SPEED;
 	new_y = all->game->player_y + sin(rad) * MOVE_SPEED;
-	if ((int)new_y >= 0 && all->game->map[(int)new_y] &&
-		(int)new_x >= 0 && (int)new_x < (int)ft_strlen(all->game->map[(int)new_y]) &&
-		all->game->map[(int)new_y][(int)new_x] != '1')
+	if ((int)new_y >= 0 && all->game->map[(int)new_y]
+		&& (int)new_x >= 0
+		&& (int)new_x < (int)ft_strlen(all->game->map[(int)new_y])
+		&& all->game->map[(int)new_y][(int)new_x] != '1')
 	{
 		all->game->player_x = new_x;
 		all->game->player_y = new_y;
@@ -108,4 +124,3 @@ void	handle_movement(t_all *all)
 			all->game->player_angle -= 360;
 	}
 }
-
